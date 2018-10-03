@@ -1,6 +1,6 @@
 package com.wh.service.app.impl;
 
-import com.gexin.fastjson.JSON;
+import com.alibaba.fastjson.JSON;
 import com.wh.dao.PushDao;
 import com.wh.entity.Result;
 import com.wh.service.app.PushService;
@@ -43,7 +43,7 @@ public class PushServiceImpl implements PushService {
 	         Result<Map<String,Object>>  result = getselectPushAll(params1);
 	         String str =  (String)params.get("f_Cid")+(String)params.get("f_Id");
 	         if(result.getSuccess()){
-	        	 QuartzManager.addJob(JSON.toJSONString(result.getList().get("undo")), str, str, str, MyPushJob.class, cron); 
+	        	 QuartzManager.addJob(JSON.toJSONString(result.getList().get("undo")), str, str, str, MyPushJob.class, cron);
 	         }
 	         
 		} catch (Exception e) {

@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="jaxws-api">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/jaws/jaxws-api.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>

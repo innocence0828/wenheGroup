@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="jaxws-rt-javadoc">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/jaws/jaxws-rt-javadoc.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>

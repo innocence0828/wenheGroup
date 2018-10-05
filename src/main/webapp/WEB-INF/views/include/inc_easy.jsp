@@ -1,2 +1,0 @@
-<link href="${ctxStatic}/global/plugins/jquery-easyui-1.4/themes/bootstrap/easyui.min.css" id="easyuiTheme" rel="stylesheet" type="text/css">
-<script src="${ctxStatic}/global/plugins/jquery-easyui-1.4/jquery.easyui.min.js" type="text/javascript" charset="utf-8"></script>

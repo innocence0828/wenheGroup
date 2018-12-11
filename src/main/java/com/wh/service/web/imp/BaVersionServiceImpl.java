@@ -5,6 +5,8 @@ import com.wh.dao.BaVersionDao;
 import com.wh.entity.BaVersionInfo;
 import com.wh.service.web.BaVersionService;
 import com.wh.utils.DateUtils;
+import com.wh.utils.FileUtil;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,6 +27,8 @@ import java.util.concurrent.Future;
 public class BaVersionServiceImpl implements BaVersionService {
 	@Resource
 	private BaVersionDao baVersionDao;
+	@Resource
+	private FileUtil  fileUtil;
 	/**
 	 * 插入版本更新表数据
 	 * @param
@@ -82,22 +86,14 @@ public class BaVersionServiceImpl implements BaVersionService {
 		try {
 			// 上传文件路径
 			String path = request.getServletContext().getRealPath("/images/");
-			// 上传文件名
-			String filename = file.getOriginalFilename();
-			File filepath = new File(path, filename);
-			// 判断路径是否存在，如果不存在就创建一个
-			if (!filepath.getParentFile().exists()) {
-				filepath.getParentFile().mkdirs();
-			}
-			// 将上传文件保存到一个目标文件当中
-			file.transferTo(new File(path + File.separator +DateUtils.getShortYMDHMS()+filename));
+			fileUtil.createFile(request,file,path);
 			flag = true;
 		} catch (Exception e) {
 			// TODO: handle exception
 			flag = false;
 		}
 		return flag;
-		
+
 	}
 
 	/**

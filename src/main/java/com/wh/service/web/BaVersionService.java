@@ -48,7 +48,7 @@ public interface BaVersionService {
 	/**
 	 * 下载逻辑语句
 	 * @param request
-	 * @param countService 
+	 * @param countService
 	 * @param
 	 * @return
 	 */

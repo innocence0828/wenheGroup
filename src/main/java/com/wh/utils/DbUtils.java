@@ -18,7 +18,7 @@ public class DbUtils {
 	/**
 	 * 插入封装一
 	 * @param sql
-	 * @param params
+	 * @param
 	 * @return
 	 * @throws SQLException 
 	 */
@@ -111,7 +111,7 @@ public class DbUtils {
 	/**
 	 * 查询多条记录封装
 	 * @param sql
-	 * @param params
+	 * @param
 	 * @return
 	 * @throws SQLException
 	 */

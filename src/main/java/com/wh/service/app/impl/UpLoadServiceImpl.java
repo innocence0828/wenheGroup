@@ -3,6 +3,7 @@ package com.wh.service.app.impl;
 
 import com.wh.dao.BaVersionDao;
 import com.wh.entity.BaVersionInfo;
+import com.wh.entity.Result;
 import com.wh.service.app.UpLoadService;
 import com.wh.service.web.BaVersionService;
 import com.wh.service.web.imp.DownLoadFile;
@@ -36,23 +37,32 @@ public class UpLoadServiceImpl implements UpLoadService {
 	 * @return
 	 */
 	@Override
-	public Boolean createFile(HttpServletRequest request, MultipartFile file) {
+	public Result createFile(HttpServletRequest request, MultipartFile file) {
 		// TODO Auto-generated method stub
-		Boolean flag = false;
-		try {
-			// 上传文件路径
-			String path = request.getServletContext().getRealPath("/images1/");
-			fileUtil.createFile(request,file,path);
-			flag = true;
-		} catch (Exception e) {
-			// TODO: handle exception
-			flag = false;
-		}
-		return flag;
 
+
+			// 上传文件路径
+			String path = request.getServletContext().getRealPath("/**images1/");
+			Result result = fileUtil.createFile(request, file, path);
+			return result;
 	}
 
-	
-	
+	/**
+	 * 删除文件
+	 * @param path
+	 * @return
+	 */
+	@Override
+	public Boolean deleteFile(String path) {
+		Boolean flag = false;
+		File file = new File(path);
+		// 路径为文件且不为空则进行删除
+		if (file.isFile() && file.exists()) {
+			file.delete();
+			flag = true;
+		}
+		return flag;
+	}
+
 
 }

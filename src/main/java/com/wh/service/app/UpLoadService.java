@@ -1,6 +1,6 @@
 package com.wh.service.app;
 
-import org.springframework.http.ResponseEntity;
+import com.wh.entity.Result;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,10 +14,12 @@ public interface UpLoadService {
 	 * @param file
 	 * @return
 	 */
-	Boolean createFile(HttpServletRequest request, MultipartFile file);
-	
+	Result createFile(HttpServletRequest request, MultipartFile file);
 
-	
-
-	
+	/**
+	 * 删除文件
+	 * @param path
+	 * @return
+	 */
+	Boolean deleteFile(String path);
 }

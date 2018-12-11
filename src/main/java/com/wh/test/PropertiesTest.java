@@ -1,29 +1,27 @@
 package com.wh.test;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.Writer;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.transaction.annotation.Transactional;
+
+import javax.annotation.Resource;
 import java.util.Date;
-import java.util.Properties;
-
-import org.apache.poi.ss.usermodel.DateUtil;
-
-import com.wh.time.CronDateUtils;
 
 
-public class PropertiesTest {
-	public static void main(String[] args) {  
-        Date now = new Date();  
-        System.out.println(CronDateUtils.getCron(now));  
-  
-        String cron = "20 28 17 02 08 ? 2016";  
-  
-        Date cronDate = CronDateUtils.getDate(cron);  
-        System.out.println("===================");  
-        System.out.println(cronDate.toString());  
-        String string = CronDateUtils.getCron(now); 
-        System.out.println("===================");  
-        System.out.println(string);  
-  
-  
-    }   
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations={"classpath:spring-mvc1.xml"})
+public class PropertiesTest  {
+
+
+@Autowired
+MyJob date;
+
+    @Test
+    public void dd(){
+        date.execute();
+    }
+
 }

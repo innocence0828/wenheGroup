@@ -3,6 +3,7 @@ package com.wh.service.web.imp;
 
 import com.wh.dao.BaVersionDao;
 import com.wh.entity.BaVersionInfo;
+import com.wh.entity.Result;
 import com.wh.service.web.BaVersionService;
 import com.wh.utils.DateUtils;
 import com.wh.utils.FileUtil;
@@ -82,17 +83,10 @@ public class BaVersionServiceImpl implements BaVersionService {
 	@Override
 	public Boolean createFile(HttpServletRequest request, MultipartFile file) {
 		// TODO Auto-generated method stub
-		Boolean flag = false;
-		try {
 			// 上传文件路径
 			String path = request.getServletContext().getRealPath("/images/");
-			fileUtil.createFile(request,file,path);
-			flag = true;
-		} catch (Exception e) {
-			// TODO: handle exception
-			flag = false;
-		}
-		return flag;
+			Result result = fileUtil.createFile(request, file, path);
+			return result.getSuccess();
 
 	}
 
@@ -118,9 +112,6 @@ public class BaVersionServiceImpl implements BaVersionService {
 		}finally {
 			executorService.shutdown();
         }
-		
-		
-		
 	}
 	
 	/**

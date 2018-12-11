@@ -26,8 +26,6 @@ public class PushController {
 	 * @param request
 	 * @return
 	 */
-	
-	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@RequestMapping(value = "/insertPush", produces = "application/json; charset=utf-8")
 	@ResponseBody
 	public String insertPush(HttpServletRequest request) {
@@ -54,8 +52,7 @@ public class PushController {
 		return result;
 
 	}
-	
-	
+
 	/**
 	 * 查询统计
 	 * @param request
@@ -123,8 +120,7 @@ public class PushController {
 		return result;
 
 	}
-	
-	
+
 	/**
 	 * 更新推送表
 	 * @param request

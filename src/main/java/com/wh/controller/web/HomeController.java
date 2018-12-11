@@ -1,4 +1,4 @@
-package com.wh.web;
+package com.wh.controller.web;
 
 import com.alibaba.fastjson.JSON;
 import com.wh.service.web.HomeService;

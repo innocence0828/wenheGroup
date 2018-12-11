@@ -75,7 +75,6 @@ public class PushController {
 		}else{
 			result = JSON.toJSONString(new Result(false, "500", "数据查询失败"));
 		}
-		
 		return result;
 
 	}

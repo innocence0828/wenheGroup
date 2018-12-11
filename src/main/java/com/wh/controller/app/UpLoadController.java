@@ -37,9 +37,9 @@ public class UpLoadController {
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@RequestMapping(value = "/uploadFile", produces = "text/html; charset=utf-8")
 	@ResponseBody
-	public Result uploadFile(HttpServletRequest request, BaVersionInfo baVersionInfo, @RequestParam(value="file",required=false) MultipartFile file) throws Exception  {
+	public Result uploadFile(HttpServletRequest request, BaVersionInfo baVersionInfo,
+							 @RequestParam(value="file",required=false) MultipartFile file) {
 		Result result = null;
-		String basePath =  request.getScheme()+"://"+request.getServerName()+":"+ request.getServerPort()+request.getContextPath()+"/";
 		// 如果文件不为空，写入上传路径
 		if (!file.isEmpty()) {
 			//文件有没有上传成功

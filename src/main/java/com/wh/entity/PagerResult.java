@@ -1,4 +1,4 @@
-package com.wh.dao;
+package com.wh.entity;
 
 import java.util.ArrayList;
 import java.util.HashMap;

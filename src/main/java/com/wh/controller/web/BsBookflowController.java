@@ -2,7 +2,7 @@ package com.wh.controller.web;
 
 import com.alibaba.fastjson.JSON;
 import com.wh.controller.base.BaseController;
-import com.wh.dao.PagerResult;
+import com.wh.entity.PagerResult;
 import com.wh.entity.BsBookFlow;
 import com.wh.entity.Result;
 import com.wh.service.web.BsBookflowService;

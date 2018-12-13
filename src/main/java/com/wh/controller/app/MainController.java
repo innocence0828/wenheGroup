@@ -47,7 +47,6 @@ public class MainController {
 	 * @param request
 	 * @return
 	 */
-	@SuppressWarnings("rawtypes")
 	@RequestMapping("/addBookFlow")
 	@ResponseBody
 	public String addBookFlow(BsBookFlow bookFlow, HttpServletRequest request) {
@@ -177,7 +176,6 @@ public class MainController {
 	 * @param request
 	 * @param response
 	 */
-	@SuppressWarnings("rawtypes")
 	@RequestMapping(value = "/delBookflowF_Id", produces = "application/json; charset=utf-8")
 	@ResponseBody
 	public String delBookflowF_Id(String f_Id,String typestr, HttpServletRequest request,
@@ -204,7 +202,6 @@ public class MainController {
 	 * @return
 	 * @throws UnsupportedEncodingException
 	 */
-	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@RequestMapping(value = "/listPage", produces = "application/json; charset=utf-8")
 	@ResponseBody

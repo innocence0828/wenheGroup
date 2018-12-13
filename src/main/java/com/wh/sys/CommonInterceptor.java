@@ -21,8 +21,7 @@ public class CommonInterceptor extends HandlerInterceptorAdapter{
 	 * 跳过登入验证的url
 	 */
 	private List<String> excludeURL;
-    @SuppressWarnings("unused")
-	@Override  
+	@Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, 
     		Object handler) throws Exception {
     	String url=request.getRequestURI();

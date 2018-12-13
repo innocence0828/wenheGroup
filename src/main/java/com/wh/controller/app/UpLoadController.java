@@ -25,7 +25,6 @@ public class UpLoadController {
 	@Resource(name ="UpLoadServiceImpl")
 	private UpLoadService countService;
 	String stringRtrue;
-   
 
 	/**
 	 * 上传文件会自动绑定到MultipartFile中
@@ -37,8 +36,7 @@ public class UpLoadController {
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@RequestMapping(value = "/uploadFile", produces = "text/html; charset=utf-8")
 	@ResponseBody
-	public Result uploadFile(HttpServletRequest request, BaVersionInfo baVersionInfo,
-							 @RequestParam(value="file",required=false) MultipartFile file) {
+	public Result uploadFile(HttpServletRequest request,@RequestParam(value="file",required=false) MultipartFile file) {
 		Result result = null;
 		// 如果文件不为空，写入上传路径
 		if (!file.isEmpty()) {
@@ -62,7 +60,7 @@ public class UpLoadController {
 	public String getpath( HttpServletResponse response,HttpServletRequest request) throws IOException {
 		Map<String,Object> params=(Map<String, Object>) request.getAttribute("params");
 		String dictList = BaseTermQueryService.getDictList("10").get(0).get("pathImage");
-		String path = params+dictList;
+		String path = dictList+params.get("pathImage");
 		response.setContentType("image/jpeg/jpg/png/gif/bmp/tiff/svg"); // 设置返回内容格式
 		path=new String(path.getBytes("ISO-8859-1"),"UTF-8");
 		File file = new File(path);       //括号里参数为文件图片路径

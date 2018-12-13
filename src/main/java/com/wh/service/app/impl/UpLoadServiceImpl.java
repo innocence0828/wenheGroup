@@ -5,6 +5,7 @@ import com.wh.dao.BaVersionDao;
 import com.wh.entity.BaVersionInfo;
 import com.wh.entity.Result;
 import com.wh.service.app.UpLoadService;
+import com.wh.service.base.BaseTermQueryService;
 import com.wh.service.web.BaVersionService;
 import com.wh.service.web.imp.DownLoadFile;
 import com.wh.utils.FileUtil;
@@ -42,7 +43,7 @@ public class UpLoadServiceImpl implements UpLoadService {
 
 
 			// 上传文件路径
-			String path = request.getServletContext().getRealPath("/**images1/");
+			String path = BaseTermQueryService.getDictList("10").get(0).get("pathImage");
 			Result result = fileUtil.createFile(request, file, path);
 			return result;
 	}

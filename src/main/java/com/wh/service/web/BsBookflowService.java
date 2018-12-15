@@ -1,6 +1,6 @@
 package com.wh.service.web;
 
-import com.wh.dao.PagerResult;
+import com.wh.entity.PagerResult;
 import com.wh.entity.BsBookFlow;
 
 import java.util.List;

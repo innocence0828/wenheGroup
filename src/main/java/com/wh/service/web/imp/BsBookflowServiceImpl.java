@@ -1,7 +1,7 @@
 package com.wh.service.web.imp;
 
 import com.wh.dao.BsBookflowDao;
-import com.wh.dao.PagerResult;
+import com.wh.entity.PagerResult;
 import com.wh.entity.BsBookFlow;
 import com.wh.service.base.BaseTermQueryService;
 import com.wh.service.web.BsBookflowService;

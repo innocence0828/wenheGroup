@@ -5,6 +5,7 @@ import com.wh.entity.BaVersionInfo;
 import com.wh.entity.Result;
 import com.wh.service.app.UpLoadService;
 import com.wh.service.base.BaseTermQueryService;
+import com.wh.utils.FileUtil;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,31 +37,33 @@ public class UpLoadController {
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@RequestMapping(value = "/uploadFile", produces = "text/html; charset=utf-8")
 	@ResponseBody
-	public Result uploadFile(HttpServletRequest request,@RequestParam(value="file",required=false) MultipartFile file) {
+	public String uploadFile(HttpServletRequest request,@RequestParam(value="file",required=false) MultipartFile file,String base64) {
 		Result result = null;
 		// 如果文件不为空，写入上传路径
-		if (!file.isEmpty()) {
+		if (file!=null&&!file.isEmpty()) {
 			//文件有没有上传成功
 			result = countService.createFile(request, file);
 
-		}else {
+		}else if(StringUtils.isNotEmpty(base64)) {
+			MultipartFile file3 = FileUtil.base64ToMultipart(base64);
+			result = countService.createFile(request, file3);
+
+		}else{
 			result = new Result(false,"上传图片文件为空");
 		}
-		return result;
+		return JSON.toJSONString(result);
 	}
 
 	/**
 	 * 获取路径
 	 * @param response
-	 * @param request
 	 * @return
 	 * @throws IOException
 	 */
 	@RequestMapping(value="/getpath", method = RequestMethod.GET,  produces = {"application/vnd.ms-excel;charset=UTF-8"})
-	public String getpath( HttpServletResponse response,HttpServletRequest request) throws IOException {
-		Map<String,Object> params=(Map<String, Object>) request.getAttribute("params");
+	public String getpath( HttpServletResponse response,String pathImage) throws IOException {
 		String dictList = BaseTermQueryService.getDictList("10").get(0).get("pathImage");
-		String path = dictList+params.get("pathImage");
+		String path = dictList+pathImage;
 		response.setContentType("image/jpeg/jpg/png/gif/bmp/tiff/svg"); // 设置返回内容格式
 		path=new String(path.getBytes("ISO-8859-1"),"UTF-8");
 		File file = new File(path);       //括号里参数为文件图片路径

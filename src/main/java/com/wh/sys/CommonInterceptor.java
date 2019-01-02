@@ -62,7 +62,7 @@ public class CommonInterceptor extends HandlerInterceptorAdapter{
 //    		}
     		
     	}else{
-    		
+
     		//web前端
     		UserInfo user=(UserInfo) request.getSession().getAttribute(Contents.USER_SESSION);
         	if(user==null||(user.getF_Id()==null||StringUtils.isEmpty(String.valueOf(user.getF_Id())))) {//web用户验证

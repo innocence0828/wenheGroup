@@ -3,12 +3,15 @@ package com.wh.service.app.impl;
 import com.wh.dao.TimedTaskDao;
 import com.wh.entity.BsBookFlow;
 import com.wh.service.app.TimedTaskService;
+import com.wh.service.base.BaseTermQueryService;
+import com.wh.utils.FileUtil;
 import com.wh.utils.JDBCConnFacory;
 import com.wh.utils.JdbcUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.io.File;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
@@ -20,6 +23,8 @@ import java.util.List;
 public class TimedTaskServiceImpl implements TimedTaskService {
 	@Resource
 	private TimedTaskDao taskDao;
+	@Resource
+	private FileUtil  fileUtil;
 	
 	/**
 	 * 删除COPY_BS_BOOKFLOW表
@@ -74,4 +79,25 @@ public class TimedTaskServiceImpl implements TimedTaskService {
 		 conn.close();
 		
 	}
+
+	/**
+	 * 清理没有数据图片
+	 */
+	@Override
+	public void cleanPhoto() {
+		List<String>  list =taskDao.loadBookFlowsData();
+		list.addAll(taskDao.loadUserInfo());
+		// 上传文件路径
+		String path = BaseTermQueryService.getDictList("10").get(0).get("pathImage");
+		File[] files= fileUtil.getFileList(path);
+		for (File file : files) {
+			//如果文件不存在就删除
+			if(!list.toString().contains(file.getName())){
+				fileUtil.deleteFile(path+file.getName());
+			}
+		}
+
+	}
+
+
 }

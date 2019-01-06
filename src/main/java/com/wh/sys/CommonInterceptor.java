@@ -87,7 +87,7 @@ public class CommonInterceptor extends HandlerInterceptorAdapter{
 						e.printStackTrace();
 					}
 				}
-        		//response.sendRedirect(request.getContextPath()+"/userController/actionLogin");
+        		response.sendRedirect(request.getContextPath()+"/userController/actionLogin");
         		return false;
         	}
         	params.put(Contents.USER_PARAM, user);

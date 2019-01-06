@@ -1,6 +1,7 @@
 package com.wh.utils;
 
 import com.wh.entity.Result;
+import net.coobird.thumbnailator.Thumbnails;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import sun.misc.BASE64Decoder;
@@ -27,6 +28,7 @@ public class FileUtil {
             // 上传文件名
             String filename = file.getOriginalFilename();
             File filepath = new File(path, filename);
+
             // 判断路径是否存在，如果不存在就创建一个
             if (!filepath.getParentFile().exists()) {
                 filepath.getParentFile().mkdirs();
@@ -35,6 +37,7 @@ public class FileUtil {
            String filePath =DateUtils.getShortYMDHMS()+filename;
             // 将上传文件保存到一个目标文件当中
             file.transferTo(new File(path +File.separator +filePath));
+            Thumbnails.of(path +File.separator +filePath).scale(0.3f).outputQuality(0.3f).toFile(path +File.separator +filePath);
             result = new Result(true,filePath);
         } catch (Exception e) {
             result = new Result(false,e.getMessage());
@@ -62,6 +65,31 @@ public class FileUtil {
             e.printStackTrace();
             return null;
         }
+    }
+
+    /**
+     * 获取文件路径
+     * @param path
+     * @return
+     */
+    public  File[] getFileList(String path){
+        File file=new File(path);
+        File[] filelist=null;
+        if(file.exists()){
+            filelist=file.listFiles();
+        }
+        return filelist;
+    }
+
+    public  Boolean deleteFile(String path) {
+        Boolean flag = false;
+        File file = new File(path);
+        // 路径为文件且不为空则进行删除
+        if (file.isFile() && file.exists()) {
+            file.delete();
+            flag = true;
+        }
+        return flag;
     }
 
 }

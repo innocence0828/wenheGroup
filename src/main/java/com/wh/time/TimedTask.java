@@ -36,6 +36,7 @@ public class TimedTask {
 	private BaseTermQueryDao userDao;
 	@Autowired
 	private PushService pushService;
+
 	/** 
      * 定时计算。每天凌晨3点 执行一次 
      */  
@@ -52,7 +53,7 @@ public class TimedTask {
 		}
 		
 	}
-	
+
     /** 
      * 心跳更新。启动时执行一次，之后每隔6H执行一次 
      */  
@@ -66,6 +67,22 @@ public class TimedTask {
 			e.printStackTrace();
 		}
     	System.out.println("end---6小时");
+	}
+
+
+	/**
+	 * 每天凌晨4点 清理所有数据库数据的图片
+	 */
+	@Scheduled(fixedRate = 1000*10)
+	public void cleanPhoto(){
+		try {
+			//删除用户对应bookFlows表
+			taskService.cleanPhoto();
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e.toString());
+		}
+
 	}
     
     /** 

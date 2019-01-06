@@ -1,5 +1,7 @@
 package com.wh.dao;
 
+import java.util.List;
+
 public interface TimedTaskDao {
 	
 	/**
@@ -21,4 +23,17 @@ public interface TimedTaskDao {
 	 */
 	
 	void insertToTestDB();
+
+
+
+	/**
+	 * 加载所有每天流水数据
+	 */
+	List<String>  loadBookFlowsData();
+
+	/**
+	 * 加载每天用户数据
+	 * @return
+	 */
+	List<String> loadUserInfo();
 }

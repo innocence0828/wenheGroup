@@ -29,9 +29,9 @@ public interface TimedTaskService {
 	 * @throws Exception 
 	 */
 	void dbwhjtTestAddAllData(List<BsBookFlow> basBookFlows) throws SQLException, Exception;
-	
 
-	
-
-	
+	/**
+	 * 清理没有数据图片
+	 */
+	void cleanPhoto();
 }

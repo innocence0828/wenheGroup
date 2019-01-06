@@ -42,7 +42,7 @@ $(function(){
 function setTime(){
 	var date = new Date();
 	var year = date.getFullYear();
-	var month = (date.getMonth()<=9?"0":"")+date.getMonth();
+	var month = (date.getMonth()<=9?"0":"")+ (date.getMonth()+1)
 	$("#pie1Date").val(year+"-"+month);
 	$("#pie1Date").on("click",function(){
 		WdatePicker({onpicked:function(){

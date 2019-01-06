@@ -37,6 +37,7 @@ public class FileUtil {
            String filePath =DateUtils.getShortYMDHMS()+filename;
             // 将上传文件保存到一个目标文件当中
             file.transferTo(new File(path +File.separator +filePath));
+            if(!filename.contains(".apk"))
             Thumbnails.of(path +File.separator +filePath).scale(0.3f).outputQuality(0.3f).toFile(path +File.separator +filePath);
             result = new Result(true,filePath);
         } catch (Exception e) {

@@ -34,6 +34,7 @@
 	        		<list>
 	        			<value>/userController/login</value>
 	        			<value>/userController/actionLogin</value>
+	        			<value>/upLoadController/*</value>
         			</list>
         		</property>
         	</bean>

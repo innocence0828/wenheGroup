@@ -73,7 +73,7 @@ public class TimedTask {
 	/**
 	 * 每天凌晨4点 清理所有数据库数据的图片
 	 */
-	@Scheduled(fixedRate = 1000*10)
+	@Scheduled(cron = "0 0 4 * * ?")
 	public void cleanPhoto(){
 		try {
 			//删除用户对应bookFlows表

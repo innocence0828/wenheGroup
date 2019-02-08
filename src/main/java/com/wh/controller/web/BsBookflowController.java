@@ -81,7 +81,7 @@ public class BsBookflowController extends BaseController {
 		}else {
 			try {
 				ExcelModel excelModel=new ExcelModel();
-				excelModel.columnsName=new String[]{"f_Date","f_Caption"," f_Money","f_Direction_type","f_Account_type"," f_Consume_type","f_Note"};
+				excelModel.columnsName=new String[]{"f_Date","f_Caption","f_Money","f_Direction_type","f_Account_type","f_Consume_type","f_Note"};
 				excelModel.cellsTitle.put(0, "日期");
 				excelModel.cellsTitle.put(1, "标题");
 				excelModel.cellsTitle.put(2, "金额");

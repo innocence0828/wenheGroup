@@ -34,7 +34,8 @@
 	        		<list>
 	        			<value>/userController/login</value>
 	        			<value>/userController/actionLogin</value>
-	        			<value>/upLoadController/*</value>
+	        			<value>/upLoadController/getpath</value>
+	        			<value>/upLoadController/uploadFile</value>
         			</list>
         		</property>
         	</bean>

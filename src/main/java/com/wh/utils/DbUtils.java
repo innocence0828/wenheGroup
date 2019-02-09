@@ -1,15 +1,12 @@
 package com.wh.utils;
 
-import java.sql.Connection;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
-import com.sun.xml.internal.ws.util.StringUtils;
 @Service
 @Transactional  
 public class DbUtils {

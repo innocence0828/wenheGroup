@@ -1,24 +1,13 @@
 package com.wh.time;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.context.support.FileSystemXmlApplicationContext;
-import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.stereotype.Component;
-
-import com.gexin.fastjson.JSON;
-import com.sun.xml.internal.bind.v2.schemagen.xmlschema.List;
 import com.wh.dao.BaseTermQueryDao;
-import com.wh.dao.UserDao;
-import com.wh.entity.Result;
 import com.wh.service.app.PushService;
 import com.wh.service.app.TimedTaskService;
 import com.wh.service.app.UserService;
 import com.wh.utils.DbUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Component;
 
 /**
  * 基于注解的定时器

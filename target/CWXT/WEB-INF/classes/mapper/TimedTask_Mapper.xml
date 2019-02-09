@@ -24,4 +24,14 @@
 		delete from bs_copy_bookFlow
 	</delete>
 
+	<!-- 查出一条或多条消费信息 -->
+	<select id="loadBookFlowsData"  resultType="java.lang.String" >
+		select F_IMGURL from bs_bookflow where F_IMGURL is not null ORDER BY f_date desc
+	</select>
+
+	<!-- 查出一条或多条用户表 -->
+	<select id="loadUserInfo"  resultType="java.lang.String" >
+		select F_IMGURL from ba_userinfo where F_IMGURL is not null
+	</select>
+
 </mapper>

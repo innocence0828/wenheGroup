@@ -26,13 +26,13 @@
 
     <!-- begin读取信息 -->
     <!--定义recvqueue -->
-    <rabbit:queue name="recvqueue1" durable="true" auto-delete="false" exclusive="false" declared-by="connectAdmin" />
+    <rabbit:queue name="recvqueue" durable="true" auto-delete="false" exclusive="false" declared-by="connectAdmin" />
     <!-- 消息接收者 -->
     <bean id="messageReceiver" class="com.wh.rabbitmq.MessageConsumer"></bean>
 
     <!-- queue litener 观察 监听模式 当有消息到达时会通知监听在对应的队列上的监听对象 -->
     <rabbit:listener-container  connection-factory="connectionFactory">
-        <rabbit:listener queues="recvqueue1" ref="messageReceiver" />
+        <rabbit:listener queues="recvqueue" ref="messageReceiver" />
     </rabbit:listener-container>
     <!-- end读取信息 -->
 
@@ -42,12 +42,12 @@
 
     <!-- begin发送结果 -->
     <!--定义sendqueue -->
-    <rabbit:queue name="sendqueue1" durable="true" auto-delete="false"  exclusive="false" declared-by="connectAdmin" />
+    <rabbit:queue name="sendqueue" durable="true" auto-delete="false"  exclusive="false" declared-by="connectAdmin" />
 
     <!-- 定义direct exchange，绑定recvqueue -->
     <rabbit:direct-exchange name="exchangeTest"  durable="true" auto-delete="false" declared-by="connectAdmin">
         <rabbit:bindings>
-            <rabbit:binding queue="sendqueue1" key="sendqueueKey"></rabbit:binding>
+            <rabbit:binding queue="sendqueue" key="sendqueueKey"></rabbit:binding>
         </rabbit:bindings>
     </rabbit:direct-exchange>
 
